@@ -1,16 +1,17 @@
-import requests, datetime
-from datetime import datetime
-baseURL = "https://date.nager.at/"
-def praznik_na_delovnik(leto)
-    
-    podatki = requests.get(f"https://date.nager.at/api/v3/pinčocholiday/{leto}/AT").json()
+import requests
+import datetime
 
-    stevec = 0
-    for praznik in podatki:
-        datum = datetime.strptime(pranik['date'], "%Y-%m-%d")
-        if datum.weekday() < 5:
-                stevec += 1
-            return stevec
+def praznik_na_delovnik(leto)
+    prosti = 0
+    klic = requests.get(f"https://date.nager.at/api/v3/publicholidays/{leto}/AT").json()
+
+    
+    for k in klic:
+        dat = k.get("date").split("-")
+        weekday = datetime.datetime(int(dat[0]), int(dat[1]), int(dat[2])).weekday()
+        if weekday < 5:
+                prosti += 1
+            return prosti
 
 
 if _name_ == "_main_":
